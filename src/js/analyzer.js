@@ -1,7 +1,4 @@
 let analyzer = {};
-analyzer.array;
-analyzer.types = [];
-
 function frequencyFinder() {
     let countedNames = analyzer.types.reduce(function (allNames, name) {
         if (name in allNames) {
@@ -16,6 +13,7 @@ function frequencyFinder() {
 }
 
 function getTypes() {
+    analyzer.types = [];
     for (let i = 0; i < analyzer.array.length; i++) {
         let type = analyzer.array[i].type;
         analyzer.types.push(type)
@@ -23,9 +21,14 @@ function getTypes() {
     return analyzer.types
 }
 
-function analyze(arr) {
+function setMisc() {
+    console.log('setmisc')
+}
+
+function analyze(arr, misc) {
     analyzer.array = arr;
     getTypes();
     analyzer.frequencies = frequencyFinder();
+    if (misc === true) { setMisc() }
     return analyzer;
 }
