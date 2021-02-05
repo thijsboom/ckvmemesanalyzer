@@ -21,14 +21,9 @@ function getTypes() {
     return analyzer.types
 }
 
-function setMisc() {
-    console.log('setmisc')
-}
-
-function analyze(arr, misc) {
+function analyze(arr) {
     analyzer.array = arr;
     getTypes();
     analyzer.frequencies = frequencyFinder();
-    if (misc === true) { setMisc() }
     return analyzer;
 }
