@@ -14,7 +14,7 @@ function fetchData(url) {
 
 class template {
     constructor(row) {
-        this.meme = row.split(/\t/)[0].toLowerCase();
+        this.name = row.split(/\t/)[0].toLowerCase();
         this.type = row.split(/\t/)[1].toLowerCase();
     }
 }
@@ -26,7 +26,6 @@ function createArray(data) {
         if (rows[i] == "") { continue }
         newRow = new template(rows[i])
         out.array.push(newRow)
-        console.log(newRow)
     }
     return out.array;
 }
