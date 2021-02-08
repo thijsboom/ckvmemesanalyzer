@@ -1,15 +1,15 @@
 let analyzer = {};
 function frequencyFinder() {
-    let countedNames = analyzer.types.reduce(function (allNames, name) {
-        if (name in allNames) {
-          allNames[name]++
+    let countedTemplates = analyzer.types.reduce(function (allTemplates, name) {
+        if (name in allTemplates) {
+            allTemplates[name]++
         }
         else {
-          allNames[name] = 1
+            allTemplates[name] = 1
         }
-        return allNames
+        return allTemplates
       }, {})
-    return countedNames
+    return separateObject(countedTemplates);
 }
 
 function getTypes() {
@@ -20,6 +20,18 @@ function getTypes() {
     }
     return analyzer.types
 }
+
+const separateObject = obj => {
+    const keys = Object.keys(obj);
+    const result = [];
+    for(let i = 0; i < keys.length; i++){
+        result.push({
+            'type': keys[i],
+            'frequency': obj[keys[i]]
+        });
+   };
+   return result;  
+};
 
 function analyze(arr) {
     analyzer.array = arr;
